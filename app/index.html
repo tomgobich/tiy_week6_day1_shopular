@@ -17,8 +17,8 @@
 </head>
 <body>
 
-	<!-- 
-		Header 
+	<!--
+		Header
 	-->
 	<header class="container">
 		<div class="row">
@@ -29,7 +29,7 @@
 	</header>
 	<!-- /header -->
 
-	<!-- 
+	<!--
 		Main Body Container
 	-->
 	<div class="container">
@@ -37,6 +37,7 @@
 			<div class="col-xs-12 col-lg-8 offset-lg-2">
 				<div class="table-responsive">
 					<table class="table">
+						<!-- Table Head -->
 						<thead>
 							<tr>
 								<th class="name">Name</th>
@@ -46,6 +47,7 @@
 								<th class="price">Amount Due</th>
 							</tr>
 						</thead>
+						<!-- Table Body -->
 						<tbody ng-controller='ItemsController as items'>
 							<tr ng-repeat='item in items.itemList track by $index'>
 								<td class="name">{{ item.name }}</td>
