@@ -92,6 +92,7 @@ img {
 // --------------------------------------------------
 .table {
 	background-color: rgba($color-alt-background, .1);
+	@include boxShadow();
 
 	thead,
 	tbody {
