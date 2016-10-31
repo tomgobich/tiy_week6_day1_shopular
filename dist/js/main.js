@@ -2,7 +2,7 @@
 
 angular.module('app', []).controller('ItemsController', function () {
 	var mv = this;
-
+	// Set tax rate
 	mv.taxRate = 1.0575;
 
 	// Structure => ID, Name, Price, Quantity, Color, Discount
