@@ -49,7 +49,7 @@
 						</thead>
 						<!-- Table Body -->
 						<tbody ng-controller='ItemsController as items'>
-							<tr ng-repeat='item in items.itemList track by $index'>
+							<tr ng-repeat='item in items.itemList'>
 								<td class="name">{{ item.name }}</td>
 								<td class="color">{{ item.color }}</td>
 								<td class="quantity">{{ item.quantity }}</td>
