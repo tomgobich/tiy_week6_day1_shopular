@@ -1,0 +1,167 @@
+@import 'bourbon/bourbon';
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+$color-background: 	#F5F7FA;
+$color-alt-background: #434A54;
+$color-border: #DDD;
+$color-primary: #8CC152;
+$color-alt: #7DB1B1;
+$color-text: #333;
+$color-text-light: #767676;
+
+$border-radius-small: 3px;
+$border-radius-large: 6px;
+
+$font-logo: 'Courgette', cursive;
+$font-body: 'Muli', sans-serif;
+
+
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+@mixin clearAfter() {
+	content:"";
+    display:table;
+    clear:both;
+}
+
+@mixin displayInlineBlock() {
+	display: inline-block;
+	vertical-align: top;
+}
+
+@mixin boxShadow() {
+	box-shadow: 1px 1px 3px rgba($color-background, .2);
+}
+
+@mixin borderRadius($border-radius) {
+	-webkit-border-radiu: $border-radius;
+	  -moz-border-radius: $border-radius;
+		   border-radius: $border-radius;
+}
+
+
+
+// --------------------------------------------------
+// Global Styles
+// --------------------------------------------------
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	font-size: 16px;
+	font-family: $font-body;
+    background-color: $color-background;
+	color: $color-text;
+}
+
+a {
+	color: $color-alt;
+
+	&:hover {
+		color: darken($color-alt, 20);
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+.logo {
+	font-family: $font-logo;
+    font-size: calc(4em + 2vw);
+    line-height: calc(1.6em + 1vw);
+    text-align: center;
+    color: $color-primary;
+    text-shadow: 4px 4px 0px darken($color-primary, 30);
+}
+
+
+
+// --------------------------------------------------
+// Table Styles
+// --------------------------------------------------
+.table {
+	background-color: rgba($color-alt-background, .1);
+
+	thead,
+	tbody {
+		text-transform: capitalize;
+
+		tr {
+
+			th,
+			td {
+				&.quantity,
+				&.sale {
+					text-align: center;
+				}
+
+				&.price {
+					text-align: right;
+				}
+			}
+		}
+	}
+
+	thead {
+		background-color: $color-alt-background;
+
+		tr {
+
+			th {
+				font-weight: bold;
+				color: $color-background;
+				border: none;
+			}
+		}
+	}
+
+	tbody {
+
+		tr {
+
+			&:first-child {
+
+				td {
+					border-top: none;
+				}
+			}
+
+			&:hover {
+
+				td {
+					background-color: rgba($color-alt-background, 0.2);
+				}
+			}
+
+			td {
+				border-top: 1px solid $color-border;
+				transition: background-color 0.1s;
+
+                &.sale {
+
+                	img {
+                		width: 20px;
+                	}
+                }
+			}
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Responsive Styles
+// --------------------------------------------------
+@import '_responsive.scss';
