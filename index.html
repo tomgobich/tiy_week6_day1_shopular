@@ -14,9 +14,6 @@
 	<!-- Font(s) -->
 	<link href="https://fonts.googleapis.com/css?family=Courgette|Muli" rel="stylesheet">
 
-	<!-- Angular 1.5.8 -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-
 </head>
 <body>
 
@@ -59,12 +56,46 @@
 								<td class="sale"><img ng-if="item.discount > 0" src="https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png"></td>
 								<td class="price">{{ items.getTotal(item.price, item.discount) | currency:"$":2 }}</td>
 							</tr>
+							<tr>
+								<td class="add-new" colspan="5">+ Add New Item</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
+				<!-- /.table-responsive -->
+				<!-- Add New Item Form -->
+				<form novalidate name="addItem" class="add-item-form">
+					<h4>Add New Item</h4>
+					<div class="input-block name">
+						<label for="name">Name</label>
+						<input type="text" class="form-input name" name="name" ng-model='item.name'>
+					</div>
+					<div class="input-block color">
+						<label for="color">Color</label>
+						<input type="text" class="form-input color" name="color" ng-model='item.color'>
+					</div>
+					<div class="input-block quantity">
+						<label for="number">Quantity</label>
+						<input type="text" class="form-input quantity" name="quantity" ng-model='item.quantity'>
+					</div>
+					<div class="input-block price">
+						<label for="price">Price</label>
+						<input type="text" class="form-input price" name="price" ng-model='item.price'>
+					</div>
+					<div class="input-block discount">
+						<label for="discount">Discount</label>
+						<input type="text" class="form-input discount" name="discount" ng-model='item.discount'>
+					</div>
+					<div class="input-block submit">
+						<input type="submit" value="Add Item">
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+
+	<!-- Angular 1.5.8 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
 
 	<!-- Main JavaScript File -->
 	<script src="js/main.js"></script>
