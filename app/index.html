@@ -87,8 +87,8 @@
 						<input type="text" class="form-input discount" name="discount" placeholder="9" ng-model='items.item.discount' min="0">
 					</div>
 					<div class="input-block submit">
-						<input type="submit" value="Add Item">
-						<input type="button" value="Cancel" class="cancel" ng-click="items.resetAddItemForm(addItem)">
+						<input type="submit" ng-value="items.submitButton">
+						<input type="button" value="Cancel" class="cancel" ng-click="items.resetAddItemForm(addItem)" ng-hide="items.isEditingItem">
 					</div>
 				</form>
 			</div>
