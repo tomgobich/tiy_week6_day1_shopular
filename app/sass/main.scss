@@ -10,6 +10,7 @@ $color-primary:        	#8CC152;
 $color-alt:            	#7DB1B1;
 $color-text:           	#333;
 $color-text-light:     	#767676;
+$color-error: 			#BF263C;
 
 $border-radius-small: 3px;
 $border-radius-large: 6px;
@@ -195,15 +196,27 @@ img {
 			border: 1px solid $color-border;
 			padding: 5px;
 
-			&[type="submit"] {
-				display: block;
-				min-width: 300px;
+			&[type="submit"],
+			&[type="button"] {
 				background-color: $color-alt-background;
 				color: $color-background;
 				font-weight: bold;
 				padding: 10px 40px;
 				border: none;
-				margin: 0 auto;
+				cursor: pointer;
+				display: inline-block;
+			}
+
+			&.cancel {
+				background-color: $color-border;
+				color: $color-text;
+				font-weight: normal;
+			}
+
+			&.ng-dirty {
+				&.ng-invalid {
+					border: 1px solid $color-error;
+				}
 			}
 		}
 

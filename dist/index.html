@@ -15,7 +15,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Courgette|Muli" rel="stylesheet">
 
 </head>
-<body>
+<body ng-controller='ItemsController as items'>
 
 	<!--
 		Header
@@ -48,8 +48,8 @@
 							</tr>
 						</thead>
 						<!-- Table Body -->
-						<tbody ng-controller='ItemsController as items'>
-							<tr ng-repeat='item in items.itemList | orderBy:"-price - discount"'>
+						<tbody>
+							<tr ng-repeat='item in items.itemList | orderBy:"-quantity"'>
 								<td class="name">{{ item.name }}</td>
 								<td class="color">{{ item.color }}</td>
 								<td class="quantity">{{ item.quantity }}</td>
@@ -57,37 +57,38 @@
 								<td class="price">{{ items.getTotal(item.price, item.discount) | currency:"$":2 }}</td>
 							</tr>
 							<tr>
-								<td class="add-new" colspan="5">+ Add New Item</td>
+								<td class="add-new" colspan="5" ng-click="isAddingItem = true">+ Add New Item</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<!-- /.table-responsive -->
 				<!-- Add New Item Form -->
-				<form novalidate name="addItem" class="add-item-form">
+				<form novalidate name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid)" ng-show="isAddingItem">
 					<h4>Add New Item</h4>
 					<div class="input-block name">
 						<label for="name">Name</label>
-						<input type="text" class="form-input name" name="name" ng-model='item.name'>
+						<input type="text" class="form-input name" name="name" placeholder="Macbook Pro" ng-model='items.item.name' required ng-minlength="3">
 					</div>
 					<div class="input-block color">
 						<label for="color">Color</label>
-						<input type="text" class="form-input color" name="color" ng-model='item.color'>
+						<input type="text" class="form-input color" name="color" placeholder="Space Gray" ng-model='items.item.color' required ng-minlength="3">
 					</div>
 					<div class="input-block quantity">
-						<label for="number">Quantity</label>
-						<input type="text" class="form-input quantity" name="quantity" ng-model='item.quantity'>
+						<label for="quantity">Quantity</label>
+						<input type="number" class="form-input quantity" name="quantity" placeholder="200" ng-model='items.item.quantity' required min="0">
 					</div>
 					<div class="input-block price">
 						<label for="price">Price</label>
-						<input type="text" class="form-input price" name="price" ng-model='item.price'>
+						<input type="number" class="form-input price" name="price" placeholder="10" ng-model='items.item.price' required min="0">
 					</div>
 					<div class="input-block discount">
 						<label for="discount">Discount</label>
-						<input type="text" class="form-input discount" name="discount" ng-model='item.discount'>
+						<input type="text" class="form-input discount" name="discount" placeholder="9" ng-model='items.item.discount' min="0">
 					</div>
 					<div class="input-block submit">
 						<input type="submit" value="Add Item">
+						<input type="button" value="Cancel" class="cancel" ng-click="isAddingItem = false">
 					</div>
 				</form>
 			</div>
