@@ -88,10 +88,9 @@
 					</div>
 					<div class="input-block submit">
 						<input type="submit" value="Add Item">
-						<input type="button" value="Cancel" class="cancel" ng-click="items.isAddingItem = false">
+						<input type="button" value="Cancel" class="cancel" ng-click="items.resetAddItemForm(addItem)">
 					</div>
 				</form>
-				{{ items.isAddingItem }}
 			</div>
 		</div>
 	</div>

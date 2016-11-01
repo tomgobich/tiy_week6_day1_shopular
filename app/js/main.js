@@ -46,20 +46,31 @@ angular.module('app', [])
 				// Add new item to itemList
 				vm.itemList.push(vm.item);
 
-				// Clear item object
-				vm.item = {};
-
-				// Reset form Angular state
-				addItemForm.$setPristine();
-				addItemForm.$setUntouched();
-
-				// Mark as no longer adding item
-				vm.isAddingItem = false;
+				vm.resetAddItemForm(addItemForm);
 			}
 			else
 			{
 				// No, alert the user to try again
 				alert('Please fill out the required fields and try again.');
 			}
+		}
+
+
+
+		// ------------------------------------------------------------
+		// Name: resetAddItemForm
+		// Abstract: Removes all changes to the form and hides it back away
+		// ------------------------------------------------------------
+		vm.resetAddItemForm = function(addItemForm)
+		{
+			// Clear item object
+			vm.item = {};
+
+			// Reset form Angular state
+			addItemForm.$setPristine();
+			addItemForm.$setUntouched();
+
+			// Mark as no longer adding item
+			vm.isAddingItem = false;
 		}
 	});
