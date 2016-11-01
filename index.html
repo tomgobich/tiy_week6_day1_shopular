@@ -66,6 +66,7 @@
 				<!-- Add New Item Form -->
 				<form novalidate name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)" ng-show="items.isAddingItem">
 					<h4>Add New Item</h4>
+					<p ng-show="items.isEditingItem">All changes are immediately saved</p>
 					<div class="input-block name">
 						<label for="name">Name</label>
 						<input type="text" class="form-input name" name="name" placeholder="Macbook Pro" ng-model='items.item.name' required ng-minlength="3">
