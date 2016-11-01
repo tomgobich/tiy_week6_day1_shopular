@@ -86,6 +86,10 @@ img {
     text-shadow: 4px 4px 0px darken($color-primary, 30);
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 
 
 // --------------------------------------------------
