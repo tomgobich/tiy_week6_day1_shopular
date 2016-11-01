@@ -156,7 +156,72 @@ img {
                 		width: 20px;
                 	}
                 }
+
+				&.add-new {
+					cursor: pointer;
+				}
 			}
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Add Item Form Styles
+// --------------------------------------------------
+.add-item-form {
+	margin-bottom: 40px;
+
+	.input-block {
+		width: 100%;
+		padding: 10px 0;
+
+		&:last-child {
+			clear: both;
+			padding-top: 20px;
+		}
+
+		label {
+			display: block;
+			font-size: 0.8em;
+			color: $color-alt-background;
+			margin: 0 0 5px;
+		}
+
+		input {
+			background-color: rgba($color-alt-background, .1);
+			color: $color-alt-background;
+			border: 1px solid $color-border;
+			padding: 5px;
+
+			&[type="submit"] {
+				display: block;
+				min-width: 300px;
+				background-color: $color-alt-background;
+				color: $color-background;
+				font-weight: bold;
+				padding: 10px 40px;
+				border: none;
+				margin: 0 auto;
+			}
+		}
+
+		&.quantity,
+		&.price,
+		&.discount {
+			width: 33.334%;
+			padding-right: 10px;
+			float: left;
+		}
+
+		&.discount {
+			padding-right: 0;
+			float: right;
+		}
+
+		.form-input {
+			width: 100%;
 		}
 	}
 }
