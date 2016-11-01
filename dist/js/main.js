@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', []).controller('ItemsController', function () {
+angular.module('app', []).controller('ItemsController', ['$location', '$anchorScroll', function ($location, $anchorScroll) {
 	var vm = this;
 
 	vm.item = {};
@@ -19,6 +19,18 @@ angular.module('app', []).controller('ItemsController', function () {
 	// ------------------------------------------------------------
 	vm.getTotal = function (price, discount) {
 		return (price - discount) * vm.taxRate;
+	};
+
+	// ------------------------------------------------------------
+	// Name: displayNewItemForm
+	// Abstract: Displays the new item form and scrolls down to it
+	// ------------------------------------------------------------
+	vm.displayNewItemForm = function () {
+		// Mark as adding item
+		vm.isAddingItem = true;
+
+		// Scroll to add item form
+		vm.scrollToAddItemForm();
 	};
 
 	// ------------------------------------------------------------
@@ -65,10 +77,14 @@ angular.module('app', []).controller('ItemsController', function () {
 		// Load current item into edited object
 		vm.item = item;
 
+		// Change submit button text
 		vm.submitButton = "Done Editing";
 
 		// Display addItem form
 		vm.isAddingItem = true;
+
+		// Scroll to add item form
+		vm.scrollToAddItemForm();
 	};
 
 	// ------------------------------------------------------------
@@ -89,4 +105,16 @@ angular.module('app', []).controller('ItemsController', function () {
 		// Mark as no longer adding item
 		vm.isAddingItem = false;
 	};
-});
+
+	// ------------------------------------------------------------
+	// Name: scrollToAddItemForm
+	// Abstract: Scrolls screen to add item form
+	// ------------------------------------------------------------
+	vm.scrollToAddItemForm = function () {
+		// Set hash
+		$location.hash('addItem');
+
+		// Scroll to hash
+		$anchorScroll();
+	};
+}]);
