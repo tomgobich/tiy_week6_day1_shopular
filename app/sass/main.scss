@@ -196,6 +196,10 @@ img {
 			border: 1px solid $color-border;
 			padding: 5px;
 
+			&:focus {
+				border: 1px solid $color-primary;
+			}
+
 			&[type="submit"],
 			&[type="button"] {
 				background-color: $color-alt-background;

@@ -23,7 +23,7 @@ angular.module('app', []).controller('ItemsController', function () {
 	// Name: addNewItem
 	// Abstract: Adds new item onto itemList array
 	// ------------------------------------------------------------
-	vm.addNewItem = function (isValid) {
+	vm.addNewItem = function (isValid, addItemForm) {
 		// Are the form inputs valid?
 		if (isValid) {
 			// Yes, give new item an ID value
@@ -36,6 +36,13 @@ angular.module('app', []).controller('ItemsController', function () {
 
 			// Add new item to itemList
 			vm.itemList.push(vm.item);
+
+			// Clear item object
+			vm.item = {};
+
+			// Reset form Angular state
+			addItemForm.$setPristine();
+			addItemForm.$setUntouched();
 
 			// Mark as no longer adding item
 			vm.isAddingItem = false;
