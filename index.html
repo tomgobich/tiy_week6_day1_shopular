@@ -57,14 +57,14 @@
 								<td class="price">{{ items.getTotal(item.price, item.discount) | currency:"$":2 }}</td>
 							</tr>
 							<tr>
-								<td class="add-new" colspan="5" ng-click="items.isAddingItem = true">+ Add New Item</td>
+								<td class="add-new" colspan="5" ng-click="items.displayNewItemForm()">+ Add New Item</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<!-- /.table-responsive -->
 				<!-- Add New Item Form -->
-				<form novalidate name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)" ng-show="items.isAddingItem">
+				<form novalidate id="addItem" name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)" ng-show="items.isAddingItem">
 					<h4>Add New Item</h4>
 					<p ng-show="items.isEditingItem">All changes are immediately saved</p>
 					<div class="input-block name">
