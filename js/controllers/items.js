@@ -4,7 +4,7 @@
 
 	'use strict';
 
-	angular.module('app').controller('ItemsController', function ($location, $anchorScroll, ItemsFactory) {
+	angular.module('app').controller('ItemsController', function ($location, $anchorScroll, API, ItemsFactory) {
 
 		var vm = this;
 
@@ -17,6 +17,8 @@
 		vm.submitButton = "Add Item";
 
 		vm.itemList = ItemsFactory.getItemList();
+
+		API.getTaxRate();
 
 		// ------------------------------------------------------------
 		// Name: getTotal
