@@ -69,6 +69,8 @@ angular.module('app', [])
 				{
 					// No, dd new item to itemList
 					vm.itemList.push(vm.item);
+
+					$.notify('Item successfully added', 'success');
 				}
 
 				// Reset addItem form
