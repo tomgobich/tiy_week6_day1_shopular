@@ -3,7 +3,44 @@
 	'use strict';
 
 	angular.module('app')
-		.controller('ItemsController', function($location, $anchorScroll, ItemsFactory) {
+		.factory('AuthenticationFactory', function()
+		{
+
+			const getAuthenticationStatus = function()
+			{
+					let isAuthenticated = false;
+
+					if(localStorage.getItem('authentication'))
+					{
+						isAuthenticated = true;
+					}
+
+					return isAuthenticated;
+			}
+
+
+
+			return {
+				getAuthenticationStatus
+			}
+
+		})
+		.controller('AuthenticationController', function(AuthenticationFactory)
+		{
+
+			let vm = this;
+
+			vm.isAuthenticated = AuthenticationFactory.getAuthenticationStatus();
+
+			vm.authenticateUser = function(isValid, authenticationForm)
+			{
+				alert('Is Working');
+			}
+
+		})
+		.controller('ItemsController', function($location, $anchorScroll, ItemsFactory)
+		{
+
 			let vm = this;
 
 			vm.item = {};

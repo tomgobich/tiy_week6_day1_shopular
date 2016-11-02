@@ -3,7 +3,8 @@
 	'use strict';
 
 	angular.module('app')
-		.factory('ItemsFactory', function() {
+		.factory('ItemsFactory', function()
+		{
 
 			const getItemList = function()
 			{
