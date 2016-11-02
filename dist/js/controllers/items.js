@@ -11,8 +11,8 @@
 				isAuthenticated: false
 			};
 
-			if (localStorage.getItem('authentication')) {
-				var user = JSON.parse(localStorage.getItem('authentication'));
+			if (localStorage.getItem('authenticatedUser')) {
+				var user = JSON.parse(localStorage.getItem('authenticatedUser'));
 
 				authenticatedUser.isAuthenticated = true;
 				authenticatedUser.username = user.username;
@@ -26,9 +26,20 @@
 			localStorage.setItem('authenticatedUser', JSON.stringify(user));
 		};
 
+		var unauthenticateUser = function unauthenticateUser() {
+			var authenticatedUser = {
+				isAuthenticated: false
+			};
+
+			localStorage.removeItem('authenticatedUser');
+
+			return authenticatedUser;
+		};
+
 		return {
 			getAuthenticatedUser: getAuthenticatedUser,
-			setAuthenticatedUser: setAuthenticatedUser
+			setAuthenticatedUser: setAuthenticatedUser,
+			unauthenticateUser: unauthenticateUser
 		};
 	}).controller('AuthenticationController', function (AuthenticationFactory) {
 
@@ -42,8 +53,12 @@
 
 				vm.user.isAuthenticated = true;
 
-				// AuthenticationFactory.setAuthenticatedUser(user);
+				AuthenticationFactory.setAuthenticatedUser(vm.user);
 			}
+		};
+
+		vm.logoutUser = function () {
+			vm.user = AuthenticationFactory.unauthenticateUser();
 		};
 	}).controller('ItemsController', function ($location, $anchorScroll, ItemsFactory) {
 

@@ -12,9 +12,9 @@
 						isAuthenticated: false,
 					};
 
-					if(localStorage.getItem('authentication'))
+					if(localStorage.getItem('authenticatedUser'))
 					{
-						let user = JSON.parse(localStorage.getItem('authentication'));
+						let user = JSON.parse(localStorage.getItem('authenticatedUser'));
 
 						authenticatedUser.isAuthenticated 	= true;
 						authenticatedUser.username			= user.username;
@@ -34,9 +34,23 @@
 
 
 
+			const unauthenticateUser = function()
+			{
+				let authenticatedUser = {
+					isAuthenticated: false,
+				};
+
+				localStorage.removeItem('authenticatedUser');
+
+				return authenticatedUser;
+			}
+
+
+
 			return {
 				getAuthenticatedUser,
 				setAuthenticatedUser,
+				unauthenticateUser,
 			}
 
 		})
@@ -47,6 +61,8 @@
 
 			vm.user = AuthenticationFactory.getAuthenticatedUser();
 
+
+
 			vm.authenticateUser = function(isValid, authenticationForm)
 			{
 				if(isValid)
@@ -55,9 +71,18 @@
 
 					vm.user.isAuthenticated = true;
 
-					// AuthenticationFactory.setAuthenticatedUser(user);
+					AuthenticationFactory.setAuthenticatedUser(vm.user);
 				}
 			}
+
+
+
+			vm.logoutUser = function()
+			{
+				vm.user = AuthenticationFactory.unauthenticateUser();
+			}
+
+
 
 		})
 		.controller('ItemsController', function($location, $anchorScroll, ItemsFactory)
