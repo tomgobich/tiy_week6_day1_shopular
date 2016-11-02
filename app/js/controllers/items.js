@@ -79,9 +79,6 @@
 
 				// Mark as adding item
 				vm.isAddingItem = true;
-
-				// Scroll to add item form
-				vm.scrollToAddItemForm();
 			}
 
 
@@ -95,9 +92,6 @@
 				// Are the form inputs valid?
 				if(isValid)
 				{
-					// Yes, give new item an ID value
-					vm.item.id = Date.now() + Math.floor(Math.random() * (9999 - 1000) + 1000);
-
 					// Replace discount if left empty
 					if( vm.item.discount === '' || vm.item.discount === null || vm.item.discount === undefined)
 					{
@@ -107,9 +101,13 @@
 					// Is this just an edit?
 					if(!vm.isEditingItem)
 					{
-						// No, dd new item to itemList
+						// No, give new item an ID value
+						vm.item.id = Date.now() + Math.floor(Math.random() * (9999 - 1000) + 1000);
+
+						// Add new item to itemList
 						vm.itemList.push(vm.item);
 
+						// Notify the user the add was successful
 						$.notify('Item successfully added', 'success');
 					}
 
@@ -146,13 +144,10 @@
 
 				// Change text
 				vm.addItemTitle = "Edit Item";
-				vm.submitButton = "Done Editing";
+				vm.submitButton = "Save Changes";
 
 				// Display addItem form
 				vm.isAddingItem = true;
-
-				// Scroll to add item form
-				vm.scrollToAddItemForm();
 			}
 
 
@@ -180,21 +175,6 @@
 				// Mark as no longer adding item
 				vm.isAddingItem  = false;
 				vm.isEditingItem = false;
-			}
-
-
-
-			// ------------------------------------------------------------
-			// Name: scrollToAddItemForm
-			// Abstract: Scrolls screen to add item form
-			// ------------------------------------------------------------
-			vm.scrollToAddItemForm = function()
-			{
-				// Set hash
-				$location.hash('addItem');
-
-				// Scroll to hash
-				$anchorScroll();
 			}
 
 
