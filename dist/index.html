@@ -51,8 +51,6 @@
 						<input type="submit" value="Login">
 					</div>
 				</form>
-
-				{{ authentication.user }}
 			</div>
 			<div class="col-xs-12 col-lg-8 offset-lg-2" ng-show="authentication.user.isAuthenticated">
 				<div class="table-responsive" ng-hide="items.isAddingItem">
@@ -128,7 +126,9 @@
 
 	<!-- Main JavaScript File -->
 	<script src="js/main.js"></script>
+	<script src="js/factories/authentication.js"></script>
 	<script src="js/factories/items.js"></script>
+	<script src="js/controllers/authentication.js"></script>
 	<script src="js/controllers/items.js"></script>
 
 </body>
