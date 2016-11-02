@@ -3,7 +3,7 @@
 	'use strict';
 
 	angular.module('app')
-		.controller('ItemsController', function($location, $anchorScroll, API, ItemsFactory)
+		.controller('ItemsController', function(API, ItemsFactory)
 		{
 
 			let vm = this;

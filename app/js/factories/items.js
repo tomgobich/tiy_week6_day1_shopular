@@ -6,6 +6,12 @@
 		.factory('ItemsFactory', function()
 		{
 
+
+
+			// ------------------------------------------------------------
+			// Name: getItemList
+			// Abstract: Either load or set base item list
+			// ------------------------------------------------------------
 			const getItemList = function()
 			{
 				let itemList;
@@ -31,6 +37,10 @@
 
 
 
+			// ------------------------------------------------------------
+			// Name: setItemList
+			// Abstract: Save item list in localStorage
+			// ------------------------------------------------------------
 			const setItemList = function(itemList)
 			{
 				localStorage.setItem('itemList', JSON.stringify(itemList));

@@ -5,6 +5,13 @@
 	angular.module('app')
 		.factory('API', function($http)
 		{
+
+
+
+			// ------------------------------------------------------------
+			// Name: getTaxRate
+			// Abstract: Get tax rate data from API
+			// ------------------------------------------------------------
 			const getTaxRate = function()
 			{
 				$http({

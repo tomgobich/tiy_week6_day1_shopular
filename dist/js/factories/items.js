@@ -6,6 +6,10 @@
 
 	angular.module('app').factory('ItemsFactory', function () {
 
+		// ------------------------------------------------------------
+		// Name: getItemList
+		// Abstract: Either load or set base item list
+		// ------------------------------------------------------------
 		var getItemList = function getItemList() {
 			var itemList = void 0;
 
@@ -25,6 +29,10 @@
 			return itemList;
 		};
 
+		// ------------------------------------------------------------
+		// Name: setItemList
+		// Abstract: Save item list in localStorage
+		// ------------------------------------------------------------
 		var setItemList = function setItemList(itemList) {
 			localStorage.setItem('itemList', JSON.stringify(itemList));
 		};

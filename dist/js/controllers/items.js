@@ -4,7 +4,7 @@
 
 	'use strict';
 
-	angular.module('app').controller('ItemsController', function ($location, $anchorScroll, API, ItemsFactory) {
+	angular.module('app').controller('ItemsController', function (API, ItemsFactory) {
 
 		var vm = this;
 
