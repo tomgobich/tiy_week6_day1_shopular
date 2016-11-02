@@ -17,6 +17,10 @@
 				vm.user.isAuthenticated = true;
 
 				AuthenticationFactory.setAuthenticatedUser(vm.user);
+
+				// Reset form Angular state
+				authenticationForm.$setPristine();
+				authenticationForm.$setUntouched();
 			}
 		};
 
