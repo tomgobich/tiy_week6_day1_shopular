@@ -132,7 +132,8 @@ angular.module('app', [])
 			vm.submitButton = "Add Item";
 
 			// Mark as no longer adding item
-			vm.isAddingItem = false;
+			vm.isAddingItem  = false;
+			vm.isEditingItem = false;
 		}
 
 
