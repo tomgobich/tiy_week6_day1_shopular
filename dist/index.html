@@ -63,35 +63,43 @@
 					</table>
 				</div>
 				<!-- /.table-responsive -->
-				<!-- Add New Item Form -->
-				<form novalidate id="addItem" name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)" ng-show="items.isAddingItem">
-					<h4>{{ items.addItemTitle }}</h4>
-					<p ng-show="items.isEditingItem">All changes are immediately saved</p>
-					<div class="input-block name">
-						<label for="name">Name</label>
-						<input type="text" class="form-input name" name="name" placeholder="Macbook Pro" ng-model='items.item.name' required ng-minlength="3">
-					</div>
-					<div class="input-block color">
-						<label for="color">Color</label>
-						<input type="text" class="form-input color" name="color" placeholder="Space Gray" ng-model='items.item.color' required ng-minlength="3">
-					</div>
-					<div class="input-block quantity">
-						<label for="quantity">Quantity</label>
-						<input type="number" class="form-input quantity" name="quantity" placeholder="200" ng-model='items.item.quantity' required min="0">
-					</div>
-					<div class="input-block price">
-						<label for="price">Price</label>
-						<input type="number" class="form-input price" name="price" placeholder="10" ng-model='items.item.price' required min="0">
-					</div>
-					<div class="input-block discount">
-						<label for="discount">Discount</label>
-						<input type="text" class="form-input discount" name="discount" placeholder="9" ng-model='items.item.discount' min="0">
-					</div>
-					<div class="input-block submit">
-						<input type="submit" ng-value="items.submitButton">
-						<input type="button" value="Cancel" class="cancel" ng-click="items.resetAddItemForm(addItem)" ng-hide="items.isEditingItem">
-					</div>
-				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="add-item-wrapper" ng-show="items.isAddingItem">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-lg-8 offset-lg-2">
+					<!-- Add New Item Form -->
+					<form novalidate id="addItem" name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)">
+						<h4>{{ items.addItemTitle }}</h4>
+						<div class="input-block name">
+							<label for="name">Name</label>
+							<input type="text" class="form-input name" name="name" placeholder="Macbook Pro" ng-model='items.item.name' required ng-minlength="3">
+						</div>
+						<div class="input-block color">
+							<label for="color">Color</label>
+							<input type="text" class="form-input color" name="color" placeholder="Space Gray" ng-model='items.item.color' required ng-minlength="3">
+						</div>
+						<div class="input-block quantity">
+							<label for="quantity">Quantity</label>
+							<input type="number" class="form-input quantity" name="quantity" placeholder="200" ng-model='items.item.quantity' required min="0">
+						</div>
+						<div class="input-block price">
+							<label for="price">Price</label>
+							<input type="number" class="form-input price" name="price" placeholder="10" ng-model='items.item.price' required min="0">
+						</div>
+						<div class="input-block discount">
+							<label for="discount">Discount</label>
+							<input type="text" class="form-input discount" name="discount" placeholder="9" ng-model='items.item.discount' min="0">
+						</div>
+						<div class="input-block submit">
+							<input type="submit" ng-value="items.submitButton">
+							<input type="button" value="Cancel" class="cancel" ng-click="items.resetAddItemForm(addItem)">
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -107,6 +115,7 @@
 
 	<!-- Main JavaScript File -->
 	<script src="js/main.js"></script>
+	<script src="js/controllers/items.js"></script>
 
 </body>
 </html>

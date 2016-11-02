@@ -6,10 +6,10 @@ const runSequence   = require('run-sequence');
 const gulp          = require('gulp');
 const sass          = require('gulp-sass');
 const cssimport     = require('gulp-cssimport');
-const autoprefixer  = require('gulp-autoprefixer'); 
+const autoprefixer  = require('gulp-autoprefixer');
 const concat        = require('gulp-concat');
 const minifyCss     = require('gulp-minify-css');
-const streamqueue   = require('streamqueue'); 
+const streamqueue   = require('streamqueue');
 
 const imagemin      = require('gulp-imagemin');
 const cache         = require('gulp-cache');
@@ -26,7 +26,7 @@ const notify        = require('gulp-notify');
 const siteRoot      = 'dist/';
 const sassFiles     = 'app/sass/**/*.scss';
 const cssFiles      = 'app/css/**/*.?(s)css';
-const jsFiles       = 'app/js/*.js';
+const jsFiles       = 'app/js/**/*.js';
 
 
 
@@ -49,15 +49,15 @@ var autoprefixerOptions = {
 // --------------------------------------------------
 gulp.task('css', () => {
   return streamqueue({ objectMode: true },
-    gulp.src('./app/sass/*.scss') 
+    gulp.src('./app/sass/*.scss')
       .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
       .pipe(sass(sassOptions)),
     gulp.src('./app/css/*.css')
       .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-      .pipe(cssimport()) 
+      .pipe(cssimport())
       .pipe(autoprefixer(autoprefixerOptions)))
-    .pipe(concat('main.css')) 
-    .pipe(minifyCss()) 
+    .pipe(concat('main.css'))
+    .pipe(minifyCss())
     .pipe(gulp.dest('./dist/css/'))
     .pipe(notify("CSS has completed"));
 });
@@ -138,9 +138,8 @@ gulp.task('build', ['css', 'images', 'babel', 'html', 'fonts', 'serve']);
 
 gulp.task('default', function(callback) {
   runSequence(
-    'clean:dist', 
-    ['build'], 
+    'clean:dist',
+    ['build'],
     callback
   )
 });
-
