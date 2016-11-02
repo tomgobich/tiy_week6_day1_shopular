@@ -4,63 +4,7 @@
 
 	'use strict';
 
-	angular.module('app').factory('AuthenticationFactory', function () {
-
-		var getAuthenticatedUser = function getAuthenticatedUser() {
-			var authenticatedUser = {
-				isAuthenticated: false
-			};
-
-			if (localStorage.getItem('authenticatedUser')) {
-				var user = JSON.parse(localStorage.getItem('authenticatedUser'));
-
-				authenticatedUser.isAuthenticated = true;
-				authenticatedUser.username = user.username;
-				authenticatedUser.loginDate = user.loginDate;
-			}
-
-			return authenticatedUser;
-		};
-
-		var setAuthenticatedUser = function setAuthenticatedUser(user) {
-			localStorage.setItem('authenticatedUser', JSON.stringify(user));
-		};
-
-		var unauthenticateUser = function unauthenticateUser() {
-			var authenticatedUser = {
-				isAuthenticated: false
-			};
-
-			localStorage.removeItem('authenticatedUser');
-
-			return authenticatedUser;
-		};
-
-		return {
-			getAuthenticatedUser: getAuthenticatedUser,
-			setAuthenticatedUser: setAuthenticatedUser,
-			unauthenticateUser: unauthenticateUser
-		};
-	}).controller('AuthenticationController', function (AuthenticationFactory) {
-
-		var vm = this;
-
-		vm.user = AuthenticationFactory.getAuthenticatedUser();
-
-		vm.authenticateUser = function (isValid, authenticationForm) {
-			if (isValid) {
-				vm.user.loginDate = Date.now();
-
-				vm.user.isAuthenticated = true;
-
-				AuthenticationFactory.setAuthenticatedUser(vm.user);
-			}
-		};
-
-		vm.logoutUser = function () {
-			vm.user = AuthenticationFactory.unauthenticateUser();
-		};
-	}).controller('ItemsController', function ($location, $anchorScroll, ItemsFactory) {
+	angular.module('app').controller('ItemsController', function ($location, $anchorScroll, ItemsFactory) {
 
 		var vm = this;
 

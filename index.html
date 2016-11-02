@@ -26,8 +26,10 @@
 				<h1 id="titleBar" class="logo">Shopular!</h1>
 				<div class="user-details" ng-show="authentication.user.isAuthenticated">
 					<h5 class="username">Welcome {{ authentication.user.username }}!</h5>
-					<p class="logout" ng-click="authentication.logoutUser()">Logout</p>
-					<h6 class="login-date">Last logged in {{ authentication.user.loginDate | date : 'MMM d - h:m a' }}</h6>
+					<div class="user-details-right">
+						<p class="logout" ng-click="authentication.logoutUser()">Logout</p>
+						<h6 class="login-date">Last logged in {{ authentication.user.loginDate | date : 'MMM d - h:m a' }}</h6>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -41,7 +43,7 @@
 		<div class="row">
 			<div class="col-xs-8 offset-xs-2 col-md-4 offset-md-4" ng-hide="authentication.user.isAuthenticated">
 				<!-- Add New Item Form -->
-				<form novalidate id="addItem" name="userAuthentication" class="authentication-form" ng-submit="authentication.authenticateUser(userAuthentication.$valid, userAuthentication)">
+				<form novalidate id="userAuthentication" name="userAuthentication" class="authentication-form" ng-submit="authentication.authenticateUser(userAuthentication.$valid, userAuthentication)">
 					<h4>Login</h4>
 					<div class="input-block name">
 						<label for="username">Username</label>
