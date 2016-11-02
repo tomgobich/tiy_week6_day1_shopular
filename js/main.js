@@ -112,6 +112,7 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 
 		// Mark as no longer adding item
 		vm.isAddingItem = false;
+		vm.isEditingItem = false;
 	};
 
 	// ------------------------------------------------------------
