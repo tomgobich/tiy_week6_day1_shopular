@@ -15,7 +15,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Courgette|Muli" rel="stylesheet">
 
 </head>
-<body ng-controller='ItemsController as items' ng-cloak>
+<body ng-controller='AuthenticationController as authentication' ng-cloak>
 
 	<!--
 		Header
@@ -24,6 +24,10 @@
 		<div class="row">
 			<div class="col-xs-12 col-lg-8 offset-lg-2">
 				<h1 id="titleBar" class="logo">Shopular!</h1>
+				<div class="user-details" ng-show="authentication.isAuthenticated">
+					<h5 class="username">Welcome TomGobich!</h5>
+					<h6 class="login-date">Last logged in Apr 10 - 9:15 AM</h6>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -32,10 +36,23 @@
 	<!--
 		Main Body Container
 	-->
-	<div class="container" ng-hide="items.isAddingItem">
+	<div class="container" ng-controller='ItemsController as items'>
 		<div class="row">
-			<div class="col-xs-12 col-lg-8 offset-lg-2">
-				<div class="table-responsive">
+			<div class="col-xs-8 offset-xs-2 col-md-4 offset-md-4" ng-hide="authentication.isAuthenticated">
+				<!-- Add New Item Form -->
+				<form novalidate id="addItem" name="userAuthentication" class="authentication-form" ng-submit="authentication.authenticateUser(userAuthentication.$valid, userAuthentication)">
+					<h4>Login</h4>
+					<div class="input-block name">
+						<label for="username">Username</label>
+						<input type="text" class="form-input username" name="username" placeholder="Username..." ng-model='authentication.user.username' required ng-minlength="3" ng-maxlength="18">
+					</div>
+					<div class="input-block submit">
+						<input type="submit" value="Login">
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-12 col-lg-8 offset-lg-2" ng-show="authentication.isAuthenticated">
+				<div class="table-responsive" ng-hide="items.isAddingItem">
 					<table class="table">
 						<!-- Table Head -->
 						<thead>
@@ -63,46 +80,39 @@
 					</table>
 				</div>
 				<!-- /.table-responsive -->
+				<!-- Add New Item Form -->
+				<form novalidate id="addItem" name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)" ng-show="items.isAddingItem">
+					<h4>{{ items.addItemTitle }}</h4>
+					<div class="input-block name">
+						<label for="name">Name</label>
+						<input type="text" class="form-input name" name="name" placeholder="Macbook Pro" ng-model='items.item.name' required ng-minlength="3">
+					</div>
+					<div class="input-block color">
+						<label for="color">Color</label>
+						<input type="text" class="form-input color" name="color" placeholder="Space Gray" ng-model='items.item.color' required ng-minlength="3">
+					</div>
+					<div class="input-block quantity">
+						<label for="quantity">Quantity</label>
+						<input type="number" class="form-input quantity" name="quantity" placeholder="200" ng-model='items.item.quantity' required min="0">
+					</div>
+					<div class="input-block price">
+						<label for="price">Price</label>
+						<input type="number" class="form-input price" name="price" placeholder="10" ng-model='items.item.price' required min="0">
+					</div>
+					<div class="input-block discount">
+						<label for="discount">Discount</label>
+						<input type="text" class="form-input discount" name="discount" placeholder="9" ng-model='items.item.discount' min="0">
+					</div>
+					<div class="input-block submit">
+						<input type="submit" ng-value="items.submitButton">
+						<input type="button" value="Cancel" class="cancel" ng-click="items.resetAddItemForm(addItem)">
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
 
-	<div class="add-item-wrapper" ng-show="items.isAddingItem">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-lg-8 offset-lg-2">
-					<!-- Add New Item Form -->
-					<form novalidate id="addItem" name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)">
-						<h4>{{ items.addItemTitle }}</h4>
-						<div class="input-block name">
-							<label for="name">Name</label>
-							<input type="text" class="form-input name" name="name" placeholder="Macbook Pro" ng-model='items.item.name' required ng-minlength="3">
-						</div>
-						<div class="input-block color">
-							<label for="color">Color</label>
-							<input type="text" class="form-input color" name="color" placeholder="Space Gray" ng-model='items.item.color' required ng-minlength="3">
-						</div>
-						<div class="input-block quantity">
-							<label for="quantity">Quantity</label>
-							<input type="number" class="form-input quantity" name="quantity" placeholder="200" ng-model='items.item.quantity' required min="0">
-						</div>
-						<div class="input-block price">
-							<label for="price">Price</label>
-							<input type="number" class="form-input price" name="price" placeholder="10" ng-model='items.item.price' required min="0">
-						</div>
-						<div class="input-block discount">
-							<label for="discount">Discount</label>
-							<input type="text" class="form-input discount" name="discount" placeholder="9" ng-model='items.item.discount' min="0">
-						</div>
-						<div class="input-block submit">
-							<input type="submit" ng-value="items.submitButton">
-							<input type="button" value="Cancel" class="cancel" ng-click="items.resetAddItemForm(addItem)">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+
 
 	<!-- Angular 1.5.8 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
