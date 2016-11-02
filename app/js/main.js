@@ -101,10 +101,8 @@ angular.module('app', [])
 			// Load current item into edited object
 			vm.item = item;
 
-			// Change Add Item section title
+			// Change text
 			vm.addItemTitle = "Edit Item";
-
-			// Change submit button text
 			vm.submitButton = "Done Editing";
 
 			// Display addItem form
