@@ -4,10 +4,11 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 	var vm = this;
 
 	vm.item = {};
-	// Set tax rate
+
 	vm.taxRate = 1.0575;
 	vm.isAddingItem = false;
 	vm.isEditingItem = false;
+	vm.addItemTitle = "Add New Item";
 	vm.submitButton = "Add Item";
 
 	// Structure => ID, Name, Price, Quantity, Color, Discount
@@ -25,7 +26,10 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 	// Name: displayNewItemForm
 	// Abstract: Displays the new item form and scrolls down to it
 	// ------------------------------------------------------------
-	vm.displayNewItemForm = function () {
+	vm.displayNewItemForm = function (addItemForm) {
+		// Reset add item form to clear all data
+		vm.resetAddItemForm(addItemForm);
+
 		// Mark as adding item
 		vm.isAddingItem = true;
 
@@ -77,6 +81,9 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 		// Load current item into edited object
 		vm.item = item;
 
+		// Change Add Item section title
+		vm.addItemTitle = "Edit Item";
+
 		// Change submit button text
 		vm.submitButton = "Done Editing";
 
@@ -99,7 +106,8 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 		addItemForm.$setPristine();
 		addItemForm.$setUntouched();
 
-		// Reset submit button text
+		// Reset text
+		vm.addItemTitle = "Add New Item";
 		vm.submitButton = "Add Item";
 
 		// Mark as no longer adding item
