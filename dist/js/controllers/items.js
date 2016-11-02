@@ -6,27 +6,44 @@
 
 	angular.module('app').factory('AuthenticationFactory', function () {
 
-		var getAuthenticationStatus = function getAuthenticationStatus() {
-			var isAuthenticated = false;
+		var getAuthenticatedUser = function getAuthenticatedUser() {
+			var authenticatedUser = {
+				isAuthenticated: false
+			};
 
 			if (localStorage.getItem('authentication')) {
-				isAuthenticated = true;
+				var user = JSON.parse(localStorage.getItem('authentication'));
+
+				authenticatedUser.isAuthenticated = true;
+				authenticatedUser.username = user.username;
+				authenticatedUser.loginDate = user.loginDate;
 			}
 
-			return isAuthenticated;
+			return authenticatedUser;
+		};
+
+		var setAuthenticatedUser = function setAuthenticatedUser(user) {
+			localStorage.setItem('authenticatedUser', JSON.stringify(user));
 		};
 
 		return {
-			getAuthenticationStatus: getAuthenticationStatus
+			getAuthenticatedUser: getAuthenticatedUser,
+			setAuthenticatedUser: setAuthenticatedUser
 		};
 	}).controller('AuthenticationController', function (AuthenticationFactory) {
 
 		var vm = this;
 
-		vm.isAuthenticated = AuthenticationFactory.getAuthenticationStatus();
+		vm.user = AuthenticationFactory.getAuthenticatedUser();
 
 		vm.authenticateUser = function (isValid, authenticationForm) {
-			alert('Is Working');
+			if (isValid) {
+				vm.user.loginDate = Date.now();
+
+				vm.user.isAuthenticated = true;
+
+				// AuthenticationFactory.setAuthenticatedUser(user);
+			}
 		};
 	}).controller('ItemsController', function ($location, $anchorScroll, ItemsFactory) {
 

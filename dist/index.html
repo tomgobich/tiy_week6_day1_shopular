@@ -24,7 +24,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-lg-8 offset-lg-2">
 				<h1 id="titleBar" class="logo">Shopular!</h1>
-				<div class="user-details" ng-show="authentication.isAuthenticated">
+				<div class="user-details" ng-show="authentication.user.isAuthenticated">
 					<h5 class="username">Welcome TomGobich!</h5>
 					<h6 class="login-date">Last logged in Apr 10 - 9:15 AM</h6>
 				</div>
@@ -38,7 +38,7 @@
 	-->
 	<div class="container" ng-controller='ItemsController as items'>
 		<div class="row">
-			<div class="col-xs-8 offset-xs-2 col-md-4 offset-md-4" ng-hide="authentication.isAuthenticated">
+			<div class="col-xs-8 offset-xs-2 col-md-4 offset-md-4" ng-hide="authentication.user.isAuthenticated">
 				<!-- Add New Item Form -->
 				<form novalidate id="addItem" name="userAuthentication" class="authentication-form" ng-submit="authentication.authenticateUser(userAuthentication.$valid, userAuthentication)">
 					<h4>Login</h4>
@@ -50,8 +50,10 @@
 						<input type="submit" value="Login">
 					</div>
 				</form>
+
+				{{ authentication.user }}
 			</div>
-			<div class="col-xs-12 col-lg-8 offset-lg-2" ng-show="authentication.isAuthenticated">
+			<div class="col-xs-12 col-lg-8 offset-lg-2" ng-show="authentication.user.isAuthenticated">
 				<div class="table-responsive" ng-hide="items.isAddingItem">
 					<table class="table">
 						<!-- Table Head -->

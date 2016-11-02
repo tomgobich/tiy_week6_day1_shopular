@@ -6,22 +6,37 @@
 		.factory('AuthenticationFactory', function()
 		{
 
-			const getAuthenticationStatus = function()
+			const getAuthenticatedUser = function()
 			{
-					let isAuthenticated = false;
+					let authenticatedUser = {
+						isAuthenticated: false,
+					};
 
 					if(localStorage.getItem('authentication'))
 					{
-						isAuthenticated = true;
+						let user = JSON.parse(localStorage.getItem('authentication'));
+
+						authenticatedUser.isAuthenticated 	= true;
+						authenticatedUser.username			= user.username;
+						authenticatedUser.loginDate 		= user.loginDate;
+
 					}
 
-					return isAuthenticated;
+					return authenticatedUser;
+			}
+
+
+
+			const setAuthenticatedUser = function(user)
+			{
+				localStorage.setItem('authenticatedUser', JSON.stringify(user));
 			}
 
 
 
 			return {
-				getAuthenticationStatus
+				getAuthenticatedUser,
+				setAuthenticatedUser,
 			}
 
 		})
@@ -30,11 +45,18 @@
 
 			let vm = this;
 
-			vm.isAuthenticated = AuthenticationFactory.getAuthenticationStatus();
+			vm.user = AuthenticationFactory.getAuthenticatedUser();
 
 			vm.authenticateUser = function(isValid, authenticationForm)
 			{
-				alert('Is Working');
+				if(isValid)
+				{
+					vm.user.loginDate = Date.now();
+
+					vm.user.isAuthenticated = true;
+
+					// AuthenticationFactory.setAuthenticatedUser(user);
+				}
 			}
 
 		})
