@@ -126,6 +126,6 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 		$location.hash('addItem');
 
 		// Scroll to hash
-		$anchorScroll();
+		$anchorScroll('addItem');
 	};
 }]);
