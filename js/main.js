@@ -67,7 +67,7 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 			vm.isEditingItem = false;
 		} else {
 			// No, alert the user to try again
-			alert('Please fill out the required fields and try again.');
+			$.notify('Please fill out the required fields and try again.', 'error');
 		}
 	};
 
