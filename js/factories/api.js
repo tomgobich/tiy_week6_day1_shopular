@@ -5,6 +5,11 @@
 	'use strict';
 
 	angular.module('app').factory('API', function ($http) {
+
+		// ------------------------------------------------------------
+		// Name: getTaxRate
+		// Abstract: Get tax rate data from API
+		// ------------------------------------------------------------
 		var getTaxRate = function getTaxRate() {
 			$http({
 				method: 'GET',
