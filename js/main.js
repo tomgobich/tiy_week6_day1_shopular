@@ -83,10 +83,8 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 		// Load current item into edited object
 		vm.item = item;
 
-		// Change Add Item section title
+		// Change text
 		vm.addItemTitle = "Edit Item";
-
-		// Change submit button text
 		vm.submitButton = "Done Editing";
 
 		// Display addItem form
@@ -126,6 +124,6 @@ angular.module('app', []).controller('ItemsController', ['$location', '$anchorSc
 		$location.hash('addItem');
 
 		// Scroll to hash
-		$anchorScroll('addItem');
+		$anchorScroll();
 	};
 }]);
