@@ -28,7 +28,7 @@
 					<h5 class="username">Welcome {{ authentication.user.username }}!</h5>
 					<div class="user-details-right">
 						<p class="logout" ng-click="authentication.logoutUser()">Logout</p>
-						<h6 class="login-date">Last logged in {{ authentication.user.loginDate | date : 'MMM d - h:m a' }}</h6>
+						<h6 class="login-date">Last logged in {{ authentication.user.loginDate | date : 'MMM d - h:mm a' }}</h6>
 					</div>
 				</div>
 			</div>
