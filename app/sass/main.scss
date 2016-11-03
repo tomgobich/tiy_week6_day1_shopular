@@ -317,6 +317,32 @@ form {
 
 
 // --------------------------------------------------
+// Animations
+// --------------------------------------------------
+@keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		transform: translate3d(100%, 0, 0);
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.page-animation {
+	animation-duration: 0.25s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+
+	&.fade-in-right {
+		animation-name: fadeInRight;
+	}
+}
+
+
+
+// --------------------------------------------------
 // Responsive Styles
 // --------------------------------------------------
 @import '_responsive.scss';
