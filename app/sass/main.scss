@@ -144,9 +144,10 @@ form {
 		color: $color-alt-background;
 		border: 1px solid $color-border;
 		padding: 5px;
+		outline: none;
 
 		&:focus {
-			border: 1px solid $color-primary;
+			border: 1px solid $color-alt-background;
 		}
 
 		&[type="submit"],
