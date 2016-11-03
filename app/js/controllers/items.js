@@ -18,7 +18,8 @@
 
 			vm.itemList = ItemsFactory.getItemList();
 
-			API.getTaxRate();
+			// Get tax rate by country & zip code
+			// API.getTaxRate();
 
 
 			// ------------------------------------------------------------
