@@ -69,7 +69,7 @@
 						</thead>
 						<!-- Table Body -->
 						<tbody>
-							<tr ng-repeat='item in items.itemList | orderBy:"-quantity"' ng-click="items.loadItem(item)">
+							<tr ng-repeat='item in items.itemList | orderBy:"-quantity" track by $index' ng-click="items.loadItem(item)">
 								<td class="name">{{ item.name }}</td>
 								<td class="color">{{ item.color }}</td>
 								<td class="quantity">{{ item.quantity }}</td>
