@@ -22,7 +22,7 @@
 	-->
 	<header class="container">
 		<div class="row">
-			<div class="col-xs-12 col-lg-8 offset-lg-2">
+			<div class="col-xs-12 col-lg-8 offset-lg-2 page-animation fade-in-right">
 				<h1 id="titleBar" class="logo">Shopular!</h1>
 				<div class="user-details" ng-show="authentication.user.isAuthenticated">
 					<h5 class="username">Welcome {{ authentication.user.username }}!</h5>
@@ -41,7 +41,7 @@
 	-->
 	<div class="container" ng-controller='ItemsController as items'>
 		<div class="row">
-			<div class="col-xs-8 offset-xs-2 col-md-4 offset-md-4" ng-hide="authentication.user.isAuthenticated">
+			<div class="col-xs-8 offset-xs-2 col-md-4 offset-md-4 page-animation fade-in-right" ng-hide="authentication.user.isAuthenticated">
 				<!-- Add New Item Form -->
 				<form novalidate id="userAuthentication" name="userAuthentication" class="authentication-form" ng-submit="authentication.authenticateUser(userAuthentication.$valid, userAuthentication)">
 					<h4>Login</h4>
@@ -54,7 +54,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-xs-12 col-lg-8 offset-lg-2" ng-show="authentication.user.isAuthenticated">
+			<div class="col-xs-12 col-lg-8 offset-lg-2 page-animation fade-in-right" ng-show="authentication.user.isAuthenticated">
 				<div class="table-responsive" ng-hide="items.isAddingItem">
 					<table class="table">
 						<!-- Table Head -->
@@ -84,7 +84,7 @@
 				</div>
 				<!-- /.table-responsive -->
 				<!-- Add New Item Form -->
-				<form novalidate id="addItem" name="addItem" class="add-item-form" ng-submit="items.addNewItem(addItem.$valid, addItem)" ng-show="items.isAddingItem">
+				<form novalidate id="addItem" name="addItem" class="add-item-form page-animation fade-in-right" ng-submit="items.addNewItem(addItem.$valid, addItem)" ng-show="items.isAddingItem">
 					<h4>{{ items.addItemTitle }}</h4>
 					<div class="input-block name">
 						<label for="name">Name</label>
